@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infobrains FAQ</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .faq-container {
+            background: #111;
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px blue;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00a2ff;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 10px 0;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            color: #00a2ff;
+            font-size: 16px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            color: white;
+        }
+
+        .faq-question:after {
+            content: "+";
+            font-size: 20px;
+        }
+
+        .faq-question.active:after {
+            content: "-";
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-container">
+        <h2>Infobrains Club - FAQ</h2>
+
+        <div class="faq-item">
+            <button class="faq-question">What is Infobrains?</button>
+            <div class="faq-answer">They are awesome!</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Who can join Infobrains?</button>
+            <div class="faq-answer">They are awesome!</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Why should I join Infobrains?</button>
+            <div class="faq-answer">They are awesome!</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Where can I find Infobrains?</button>
+            <div class="faq-answer">They are awesome!</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How do I contact Infobrains?</button>
+            <div class="faq-answer">They are awesome!</div>
+        </div>
+
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll(".faq-question");
+
+        questions.forEach(question => {
+            question.addEventListener("click", () => {
+                const answer = question.nextElementSibling;
+
+                // Close all other answers
+                document.querySelectorAll(".faq-answer").forEach(item => {
+                    if (item !== answer) item.classList.remove("active");
+                });
+
+                document.querySelectorAll(".faq-question").forEach(q => {
+                    if (q !== question) q.classList.remove("active");
+                });
+
+                // Toggle current answer
+                answer.classList.toggle("active");
+                question.classList.toggle("active");
+            });
+        });
+    </script>
+
+</body>
+</html>
